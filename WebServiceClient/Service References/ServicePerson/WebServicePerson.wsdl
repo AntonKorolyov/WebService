@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="ListPerson">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListPersonResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListPersonResult" type="tns:ArrayOfPerson" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPerson">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Person" nillable="true" type="tns:Person" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Person">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fname" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreatePerson">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="person" type="tns:Person" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreatePersonResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdatePerson">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="person" type="tns:Person" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdatePersonResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeletePerson">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeletePersonResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ListPersonSoapIn">
+    <wsdl:part name="parameters" element="tns:ListPerson" />
+  </wsdl:message>
+  <wsdl:message name="ListPersonSoapOut">
+    <wsdl:part name="parameters" element="tns:ListPersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreatePersonSoapIn">
+    <wsdl:part name="parameters" element="tns:CreatePerson" />
+  </wsdl:message>
+  <wsdl:message name="CreatePersonSoapOut">
+    <wsdl:part name="parameters" element="tns:CreatePersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePersonSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdatePerson" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePersonSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdatePersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeletePersonSoapIn">
+    <wsdl:part name="parameters" element="tns:DeletePerson" />
+  </wsdl:message>
+  <wsdl:message name="DeletePersonSoapOut">
+    <wsdl:part name="parameters" element="tns:DeletePersonResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServicePersonSoap">
+    <wsdl:operation name="ListPerson">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">List Persons</wsdl:documentation>
+      <wsdl:input message="tns:ListPersonSoapIn" />
+      <wsdl:output message="tns:ListPersonSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreatePerson">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Create Person</wsdl:documentation>
+      <wsdl:input message="tns:CreatePersonSoapIn" />
+      <wsdl:output message="tns:CreatePersonSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePerson">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Update Person</wsdl:documentation>
+      <wsdl:input message="tns:UpdatePersonSoapIn" />
+      <wsdl:output message="tns:UpdatePersonSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePerson">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Delete Person</wsdl:documentation>
+      <wsdl:input message="tns:DeletePersonSoapIn" />
+      <wsdl:output message="tns:DeletePersonSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServicePersonSoap" type="tns:WebServicePersonSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListPerson">
+      <soap:operation soapAction="http://tempuri.org/ListPerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePerson">
+      <soap:operation soapAction="http://tempuri.org/CreatePerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePerson">
+      <soap:operation soapAction="http://tempuri.org/UpdatePerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePerson">
+      <soap:operation soapAction="http://tempuri.org/DeletePerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServicePersonSoap12" type="tns:WebServicePersonSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListPerson">
+      <soap12:operation soapAction="http://tempuri.org/ListPerson" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePerson">
+      <soap12:operation soapAction="http://tempuri.org/CreatePerson" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePerson">
+      <soap12:operation soapAction="http://tempuri.org/UpdatePerson" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePerson">
+      <soap12:operation soapAction="http://tempuri.org/DeletePerson" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebServicePerson">
+    <wsdl:port name="WebServicePersonSoap" binding="tns:WebServicePersonSoap">
+      <soap:address location="http://localhost:61481/WebServicePerson.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServicePersonSoap12" binding="tns:WebServicePersonSoap12">
+      <soap12:address location="http://localhost:61481/WebServicePerson.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

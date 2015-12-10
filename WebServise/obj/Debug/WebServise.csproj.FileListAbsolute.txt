@@ -1,0 +1,6 @@
+c:\users\anton\documents\visual studio 2013\Projects\WebServise\WebServise\obj\Debug\WebServise.csprojResolveAssemblyReference.cache
+c:\users\anton\documents\visual studio 2013\Projects\WebServise\WebServise\bin\WebServise.dll.config
+c:\users\anton\documents\visual studio 2013\Projects\WebServise\WebServise\bin\WebServise.dll
+c:\users\anton\documents\visual studio 2013\Projects\WebServise\WebServise\bin\WebServise.pdb
+c:\users\anton\documents\visual studio 2013\Projects\WebServise\WebServise\obj\Debug\WebServise.dll
+c:\users\anton\documents\visual studio 2013\Projects\WebServise\WebServise\obj\Debug\WebServise.pdb
